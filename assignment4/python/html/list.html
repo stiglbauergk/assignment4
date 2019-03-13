@@ -1,0 +1,43 @@
+<!doctype html>
+<title>Fortnite Kill Tracker</title>
+
+<header>
+  <h1>Kill Counter</h1>
+</header>
+
+<table>
+
+  <tr>
+    <th>Gamer</th>
+    <th colspan="{{ n_kills }}">Kills</th>
+  </tr>
+
+  <form method="post">
+  {% for gamer in gamers %}
+    <tr>
+      <td>{{gamer.name}}</td>
+      {% for kill in gamer.kills %}
+        <td>
+          {{kill}}
+        </td>
+      {% endfor %}
+      <td>
+        <input type="submit" value="update" name="{{gamer._id}}">
+      </td>
+      <td>
+        <input type="submit" value="delete" name="{{gamer._id}}">
+      </td>
+    </tr>
+    {% endfor %}
+
+  <tr>
+    <td>
+      <input type="submit" value="add" name="add">
+    </td>
+  </tr>
+
+  </form>
+
+</table>
+
+</br>{{msg}}
